@@ -1,0 +1,98 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+
+
+    <style>
+      body {
+ 
+background-image:url("yolo.jpg");
+background-repeat:no-repeat;
+        margin: 0px;
+        padding: 0px;
+      }
+    </style>
+
+  </head>
+  <body>
+<div>
+<input type="button" value="Create Post It" id="btn"  style="background-color:orange" onClick="myFunction()">
+
+<input type="text" placeholder="Õour Ìessage" id="text area">
+</div>
+
+
+    <canvas id="myCanvas" width="800" height="600" ></canvas>
+
+
+<script>
+
+             
+     function myFunction(){
+var newInput = document.getElementById("text area");
+ var canvas = document.getElementById('myCanvas');
+ var context = canvas.getContext('2d');
+
+
+
+	
+var imageObj = new Image();
+
+
+
+imageObj.onload = function(){
+      var x = 62;
+      var y = 110;
+
+ draggable('myCanvas');
+                
+
+context.drawImage(imageObj, 10, 10);
+
+      context.font = 'italic 20pt Buxton Sketch';      
+      context.lineWidth = 2;
+      // stroke color
+      context.strokeStyle = 'blue';
+      context.strokeText(newInput.value, x, y);
+
+
+
+};
+
+imageObj.src = "Note2.png"; 
+
+
+
+}
+var dragObj = null;
+function draggable(id)
+{
+    var obj = document.getElementById(id);
+    obj.style.position = "absolute";
+    obj.onmousedown = function(){
+            dragObj = obj;
+    }
+}
+ 
+document.onmouseup = function(e){
+    dragObj = null;
+};
+
+document.onmousemove = function(e){
+    var x = e.pageX;
+    var y = e.pageY;
+
+    if(dragObj == null)
+        return;
+
+    dragObj.style.left = x +"px";
+    dragObj.style.top= y +"px";
+};
+
+
+
+
+    </script>
+
+  </body>
+</html>   
